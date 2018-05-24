@@ -24,6 +24,9 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# set home
+set $user strozzi
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up l
@@ -35,10 +38,10 @@ set $right semicolon
 floating_modifier Mod4
 
 # set backgorund image
-exec --no-startup-id feh --bg-scale /home/strozzi/.i3/bg.*
+exec --no-startup-id feh --bg-scale /home/$user/.i3/bg.*
 
 # exec battery-watcher
-exec --no-startup-id ~/.i3/bin/battery-watcher.sh
+exec --no-startup-id /home/$user/.i3/bin/battery-watcher.sh
 
 # spotify tracks
 bindsym Mod4+Shift+comma exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous 
@@ -46,7 +49,7 @@ bindsym Mod4+Shift+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.
 bindsym Mod4+Shift+period exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 
 
 # disable wifi
-bindsym XF86WLAN exec ~/.i3/bin/toggle-wifi.sh
+bindsym XF86WLAN exec /home/$user/.i3/bin/toggle-wifi.sh
 
 # volume control
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
@@ -61,10 +64,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # suspend session
-bindsym Mod4+Shift+s exec i3lock -i /home/strozzi/.i3/lock.* && sudo pm-suspend 
+bindsym Mod4+Shift+s exec i3lock -i /home/$user/.i3/lock.* && sudo pm-suspend 
 
 # lock screen
-bindsym Control+Mod1+l exec i3lock -i /home/strozzi/.i3/lock.*
+bindsym Control+Mod1+l exec i3lock -i /home/$user/.i3/lock.*
 
 # start a terminal
 bindsym Mod4+Return exec i3-sensible-terminal
@@ -199,7 +202,7 @@ bindsym Mod4+r mode "resize"
 bar {
         #status_command i3status
         font pango:DejaVu Sans Mono, FontAwesome 8
-        status_command /home/strozzi/.i3/bin/mySatausBar.sh
+        status_command /home/$user/.i3/bin/mySatausBar.sh
         colors {
             separator #666666
             background #222222
